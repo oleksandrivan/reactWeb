@@ -13,8 +13,15 @@ class App extends Component {
       image : closed,
     };
   subscribe((err,item) => {
-    console.log("type",item.type,"value",item.reading.value);
     const type = item.type;
+
+    if(type.localeCompare("Accelerometer") != 0){
+      console.log("type",item.type,"value",item.reading.value);
+    }else {
+      console.log("type",item.type,"value",item.x.value, item.y.value,
+    item.z.value);
+    }
+
     if(type.localeCompare("Door") == 0){
       if(item.reading.value == 1){
         this.setState({image:open});
@@ -27,6 +34,8 @@ class App extends Component {
       }else {
         this.setState({image:closed});
       }
+    }else if (type.localeCompare("Accelerometer") == 0) {
+      this.setState({image:moving});
     }
 
   });

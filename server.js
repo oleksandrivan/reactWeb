@@ -15,7 +15,8 @@ const server = http.createServer(app);
 // // This creates our socket using the instance of the server
 const io = socketIO(server);
 
-
+// Create url path to listen notifications and emit the information throught socket,
+// responds with the same information recieved
 app.post('/api/world', (req, res) => {
 
   for (var i = 0; i < req.body.data.length ; i++){
@@ -28,13 +29,5 @@ app.post('/api/world', (req, res) => {
   );
 });
 
-// io.on('connection', (client) => {
-//   client.on('subscribeToTimer', (interval) => {
-//     console.log('client is subscribing to timer with interval ', interval);
-//     setInterval(() => {
-//       client.emit('timer', new Date());
-//     }, interval);
-//   });
-// });
-
+//Start server
 server.listen(port, () => console.log(`Listening on port ${port}`));

@@ -10,18 +10,21 @@ class App extends Component {
   constructor(props) {
   super(props);
   this.state = {
-      image : closed,
+      image : closed, //Sets default image
     };
   subscribe((err,item) => {
     const type = item.type;
-
+    
+    //Logs the data recieved
+    
     if(type.localeCompare("Accelerometer") != 0){
       console.log("type",item.type,"value",item.reading.value);
     }else {
       console.log("type",item.type,"value",item.x.value, item.y.value,
     item.z.value);
     }
-
+    
+    //Sets image depending on data and sensor type
     if(type.localeCompare("Door") == 0){
       if(item.reading.value == 1){
         this.setState({image:open});
@@ -41,7 +44,7 @@ class App extends Component {
   });
 
   }
-
+  //Render the state image
   render() {
     return (
     <div className="App">

@@ -4,6 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `node server.js`
+Starts the Node.js server to recieve the subscription notifications from Fiware.
+
 ### `npm start`
 
 Runs the app in the development mode.<br>
